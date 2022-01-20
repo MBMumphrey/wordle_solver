@@ -56,14 +56,11 @@ def find_guess(current_answers):
 
 if __name__ == "__main__":
     possible_answers = [line.strip() for line in open(sys.argv[1])]
-    number_sims = int(sys.argv[2])
-
     guess_counts = Counter()
 
-    for i in range(number_sims):
+    for i, answer in enumerate(possible_answers):
         if i % 100 == 0:
             print(i)
-        answer = random.choice(possible_answers)
         current_answers = possible_answers
         run = Wordle(answer)
         #first guess based on previous analysis of which words give the best starting information
