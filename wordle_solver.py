@@ -76,7 +76,7 @@ if __name__ == "__main__":
             else:
                 if best_guess == answer:
                     guess_counts.update([j])
-                elif:
+                else:
                     guess_counts.update([j + 1])
                 break
             j += 1
