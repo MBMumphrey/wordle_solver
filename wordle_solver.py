@@ -74,7 +74,10 @@ if __name__ == "__main__":
             if (len(current_answers) > 1):
                 best_guess = find_guess(current_answers)
             else:
-                guess_counts.update([j])
+                if best_guess == answer:
+                    guess_counts.update([j])
+                elif:
+                    guess_counts.update([j + 1])
                 break
             j += 1
 
