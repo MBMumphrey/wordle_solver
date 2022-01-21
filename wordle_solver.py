@@ -64,21 +64,22 @@ if __name__ == "__main__":
         current_answers = possible_answers
         run = Wordle(answer)
         #first guess based on previous analysis of which words give the best starting information
-        best_guess = "saree"
+        best_guess = ""
         j = 1
-        while(len(current_answers) > 1):
+        while(len(current_answers) > 0):
+            if j == 1:
+                best_guess = "soare"
+            elif j == 2:
+                best_guess = "clint"
+            if best_guess == answer:
+                guess_counts.update([j])
+                break
             run.check_guess(best_guess)
             run.make_regex()
             #print(f"\t{j} - {best_guess} - {run.pattern}")
             current_answers = [x for x in list(filter(re.compile(run.regex).match, current_answers)) if not x in run.guesses]
-            if (len(current_answers) > 1):
+            if (len(current_answers) > 0):
                 best_guess = find_guess(current_answers)
-            else:
-                if best_guess == answer:
-                    guess_counts.update([j])
-                else:
-                    guess_counts.update([j + 1])
-                break
             j += 1
 
     print(sorted(guess_counts.items()))
